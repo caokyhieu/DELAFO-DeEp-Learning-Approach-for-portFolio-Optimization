@@ -27,6 +27,4 @@ python main.py --data_path path/to/data --model model/name --timesteps_input tim
   * Now all the models just support for data have 4 fields ['ticker','date','price','volume'] like in picture:
   [!images]()
 
-
-
 ## Requirement:
