@@ -140,8 +140,11 @@ def build_resnet_model(params):
     regularized_coff_2 = params['l2_1']
     regularized_coff_3 = params['l2_2']
     learning_rate = params['l2_3']
+    input_shape = params['input_shape']
+    ts = input_shape[1]
+    tickers = input_shape[0]
 
-    input = Input(shape=(381,64,2))
+    input = Input(shape=input_shape)
     conv1 = conv_bn_relu(filters=conv1_nfilter,kernel_size=(1,conv1_ksize),strides=(1,1),\
                          kernel_regularizer=regularizers.l2(regularized_coff_1)) (input)
 
@@ -170,7 +173,7 @@ def build_resnet_model(params):
 
     out = Flatten()(out)
 
-    out = Dense(381, kernel_regularizer =regularizers.l2(regularized_coff_3))(out)
+    out = Dense(tickers, kernel_regularizer =regularizers.l2(regularized_coff_3))(out)
     out = Activation('sigmoid')(out)
 
 
