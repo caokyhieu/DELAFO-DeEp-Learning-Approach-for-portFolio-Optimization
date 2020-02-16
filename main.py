@@ -6,6 +6,9 @@ from models.RNN_models import *
 from models.selfatt_RNN import *
 from models.resnet import *
 from sklearn.model_selection import TimeSeriesSplit
+import os
+import json
+import numpy as np
 
 class DELAFO:
     def __init__(self,path_data,model_name,model_config_path,timesteps_input=64,timesteps_output=19):
@@ -55,10 +58,10 @@ class DELAFO:
     def write_log(self,history,path_dir,name_file):
         his = history.history
         if os.path.exists(path_dir)==False:
-            os.mkdirs(path_dir)
+            os.makedirs(path_dir)
         with open(os.path.join(path_dir,name_file), 'w') as outfile:
             json.dump(his, outfile,cls=MyEncoder, indent=2)
-        print("write file log at %s"%(path))
+        print("write file log at %s"%(os.path.join(path_dir,name_file)))
 
     def train_model(self,n_fold,batch_size,epochs):
         tscv = TimeSeriesSplit(n_splits=n_fold)
@@ -66,16 +69,32 @@ class DELAFO:
             X_tr, X_val = self.X[train_index], self.X[test_index[range(self.timesteps_output-1,len(test_index),self.timesteps_output)]]
             y_tr, y_val = self.y[train_index], self.y[test_index[range(self.timesteps_output-1,len(test_index),self.timesteps_output)]]
 
-            his = self.model.fit(X_tr, y_tr, batch_size=batch_size, epochs= epochs,
-                          validation_data=(X_val,y_val))
+            his = self.model.fit(X_tr, y_tr, batch_size=batch_size, epochs= epochs,validation_data=(X_val,y_val))
+            mask_tickers = self.predict_portfolio(X_val)
+            print('Sharpe ratio of this portfolio: %s' % str([self.calc_sharpe_ratio(mask_tickers[i],y_val[i]) for i in range(len(y_val))]))
+
             self.write_log(his,'./logs/%s' % self.model_name,"log_%d.txt"%(test_index[-1]))
 
-    def predict_portfolios(self,X):
+    def predict_portfolio(self,X):
         results = self.model.predict(X)
         mask_tickers = results>0.5
         print("There are total %d samples to predict" % len(results))
         for i in range(len(mask_tickers)):
             print('Sample %d : [ %s ]' % (i, ' '.join([self.tickers[j] for j in range(len(self.tickers)) if mask_tickers[i][j]==1])))
+
+        return mask_tickers
+
+    def calc_sharpe_ratio(self,weight,y):
+        """Here y is the daily return have the shape (tickers,days)
+        weight have the shape (tickers,)"""
+        epsilon = 1e-6
+        weights = np.round(weight)
+        sum_w = np.clip(weights.sum(),epsilon,y.shape[0])
+        norm_weight = weights/sum_w
+        port_return = norm_weight.dot(y).squeeze()
+        mean = np.mean(port_return)
+        std = np.maximum(np.std(port_return),epsilon)
+        return np.sqrt(self.timesteps_output) * mean/std
 
 
 
