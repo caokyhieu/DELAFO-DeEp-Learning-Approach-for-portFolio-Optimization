@@ -1,4 +1,4 @@
-from keras.layers import Input, Activation, Dense,Flatten, BatchNormalization, Add, Conv2D,
+from keras.layers import Input, Activation, Dense,Flatten, BatchNormalization, Add, Conv2D
 from keras.layers import MaxPooling2D,AveragePooling2D,Permute,Reshape,LSTM,Lambda,GRU,Bidirectional,BatchNormalization,Concatenate
 from keras import regularizers
 from keras.optimizers import Adam
@@ -13,12 +13,12 @@ def build_selfatt_gru_model(params):
     reg1 = params['l2']
     reg2 = params['l2_1']
     lr = params['l2_2']
-    ts = 64
-    tickers = 381
-    features = 2
+    input_shape = params['input_shape']
+    ts = input_shape[1]
+    tickers = input_shape[0]
 
 
-    input = Input(shape=(tickers,ts,features))
+    input = Input(shape=input_shape)
     reshape_inp = Lambda(lambda x: K.permute_dimensions(x,pattern=(0,2,1,3))) (input)
     reshape_inp = Reshape((ts,-1)) (reshape_inp)
 
@@ -52,11 +52,11 @@ def build_selfatt_lstm_model(params):
     reg1 = params['l2']
     reg2 = params['l2_1']
     lr = params['l2_2']
-    ts = 64
-    tickers = 381
-    features = 2
+    input_shape = params['input_shape']
+    ts = input_shape[1]
+    tickers = input_shape[0]
 
-    input = Input(shape=(tickers,ts,features))
+    input = Input(shape=input_shape)
     reshape_inp = Lambda(lambda x: K.permute_dimensions(x,pattern=(0,2,1,3))) (input)
     reshape_inp = Reshape((ts,-1)) (reshape_inp)
 
