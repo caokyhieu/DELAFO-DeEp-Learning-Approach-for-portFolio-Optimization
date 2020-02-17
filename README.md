@@ -35,7 +35,7 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
 ## DATA
   * Must be in csv file.
   * Now all the models just support for data have 4 fields ['ticker','date','price','volume'] like in picture:
-  <img src="images/data_sample.png" width="120">
+  <img align= "center" src="images/data_sample.png" width="380">
 
 
 
