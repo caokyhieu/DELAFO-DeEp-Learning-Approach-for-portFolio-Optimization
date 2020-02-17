@@ -16,20 +16,22 @@
 
 ## Usage:
 ```bash
-$ python main.py --data_path path/to/data --model model/name --timesteps_input time/window/input --timesteps_input time/window/output
+$ python main.py --data_path path/to/data --model model/name --load_pretrained True/False --model_path '' --timesteps_input time/window/input --timesteps_input time/window/output
 ```
-### data_path: path to dataset.
-### model_name : all available models at the moment are:
+### --data_path: path to dataset.
+### --load_pretrained: Bool value. True if you want to load pretrained model. Default False
+### --model_path : if --load_pretrained == True . You have to specify the `path` to pretrained model.
+### --model_name : all available models at the moment are:
  * ['ResNet' , 'GRU' , 'LSTM' , 'AA_GRU' , 'AA_LSTM' , 'SA_GRU' , 'SA_LSTM'] with corresponding configuration file in `config` folder.
   RNN model with attention mechanism.
-  
+
    <img align="left" src="images/Add_att_RNN.png" width="350">
    <img align="right" src="images/selfatt_RNN.png" width="350">
  * You can change the configuration of these models by changing the config file in config folder (We do not recommend to do it, because these hyperparameters had been tuned for these models).
  * You can design your own model by put it in `models` folder.
 
-### timesteps_input : time window for the input.
-### timesteps_input : time window for the output.
+### --timesteps_input : time window for the input.
+### --timesteps_input : time window for the output.
 ## DATA
   * Must be in csv file.
   * Now all the models just support for data have 4 fields ['ticker','date','price','volume'] like in picture:
