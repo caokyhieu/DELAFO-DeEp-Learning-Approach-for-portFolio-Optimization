@@ -22,8 +22,9 @@ $ python main.py --data_path path/to/data --model model/name --timesteps_input t
 ### model_name : all available models at the moment are:
  * ['ResNet' , 'GRU' , 'LSTM' , 'AA_GRU' , 'AA_LSTM' , 'SA_GRU' , 'SA_LSTM'] with corresponding configuration file in `config` folder.
   RNN model with attention mechanism.
-   <img src="images/Add_att_RNN.png" width="380">
-   <img src="images/selfatt_RNN.png" width="380">
+  
+   <img align="left" src="images/Add_att_RNN.png" width="350">
+   <img align="right" src="images/selfatt_RNN.png" width="350">
  * You can change the configuration of these models by changing the config file in config folder (We do not recommend to do it, because these hyperparameters had been tuned for these models).
  * You can design your own model by put it in `models` folder.
 
