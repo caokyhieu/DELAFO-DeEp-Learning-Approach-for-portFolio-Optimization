@@ -21,7 +21,7 @@
   * The result will write in `logs` folder and `plot` folder.
   * The model will be saved in `pretrain_model` folder. You can download our pretrained model [Additive Attention with GRU](https://drive.google.com/file/d/1X5dhLOe-aLfWB6SWII-YTJbKTEQy1C08/view?usp=sharing)
 
-## Usage:
+## Usage
 Firstly, you need to download data and put it in `data` folder, you can download from [Link download data from Entropy Contest 2019](https://drive.google.com/file/d/1IwUwxzctgagNipWLBfuqCUAfmkXVyeXC/view?usp=sharing).
 ```bash
 $ python main.py --data_path path/to/data --model model/name --load_pretrained True/False --model_path '' --timesteps_input time/window/input --timesteps_input time/window/output
@@ -60,14 +60,14 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
   <img align= "center" src="images/data_sample.png" width="380">
 
 
-## Requirement:
+## Requirements
  * python          3.6.2
  * scikit-learn    0.21.3
  * Keras           2.3.1
  * pandas          0.25.1
  * tensorflow      1.13.2
 
-## References:
+## References
 We recommend you to cite our following paper when using these codes for further investigation:
 ```bash
 @inproceedings{hieu2020,
