@@ -69,11 +69,11 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
 
 ## References:
 We recommend you to cite our following paper when using these codes for further investigation:
-'''
+```bash
 @inproceedings{hieu2020,
   title={DELAFO: An Efficient Portfolio Optimization Using Deep Neural Networks},
   author={Cao Ky Hieu, Cao Ky Han, and Nguyen Thanh Binh},
   booktitle={Proceedings of the 24th Pacific-Asia Conference on Knowledge Discovery and Data Mining, PAKDD 2020, Singapore},
   year={2020}
 }
-'''
+```
