@@ -15,6 +15,7 @@
 
 
 ## Usage:
+Firstly, you need to download data and put it in `data` folder, you can download from [Link download data from Entropy Contest 2019](https://drive.google.com/file/d/1IwUwxzctgagNipWLBfuqCUAfmkXVyeXC/view?usp=sharing).
 ```bash
 $ python main.py --data_path path/to/data --model model/name --load_pretrained True/False --model_path '' --timesteps_input time/window/input --timesteps_input time/window/output
 ```
