@@ -49,8 +49,10 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
  * You can change the configuration of these models by changing the config file in config folder (We do not recommend to do it, because these hyperparameters had been tuned for these models).
  * You can design your own model by put it in `models` folder.
 
-### --timesteps_input : time window for the input.
-### --timesteps_input : time window for the output.
+**--timesteps_input** : time window for the input.
+
+**--timesteps_input** : time window for the output.
+
 ## DATA
   * Must be in csv file.
   * Now all the models just support for data have 4 fields ['ticker','date','price','volume'] like in picture:
