@@ -53,7 +53,7 @@ class DELAFO:
             hyper_params = load_config_file(model_config_path[model_name])
             hyper_params['input_shape'] = (X.shape[1],X.shape[2],X.shape[3])
             model = build_selfatt_gru_model(hyper_params)
-        else:
+        elif model_name == "SA_LSTM":
             hyper_params = load_config_file(model_config_path[model_name])
             hyper_params['input_shape'] = (X.shape[1],X.shape[2],X.shape[3])
             model = build_selfatt_lstm_model(hyper_params)
@@ -63,7 +63,11 @@ class DELAFO:
 
     @classmethod
     def from_saved_model(cls,path_data,model_path,timesteps_output):
+        '''  If you load pretrain model with new custom layer, you should put it in custom_objects
+            below.
+        '''
         model = load_model(model_path,custom_objects={"AdditiveAttentionLayer":AdditiveAttentionLayer,
+                                                        "SelfAttentionLayer":SelfAttentionLayer,
                                                         "sharpe_ratio_loss":sharpe_ratio_loss,
                                                         "sharpe_ratio":sharpe_ratio})
         model_name = model.name
@@ -83,6 +87,7 @@ class DELAFO:
     def train_model(self,n_fold,batch_size,epochs):
         tscv = TimeSeriesSplit(n_splits=n_fold)
         for train_index, test_index in tscv.split(self.X):
+
             X_tr, X_val = self.X[train_index], self.X[test_index[range(self.timesteps_output-1,len(test_index),self.timesteps_output)]]
             y_tr, y_val = self.y[train_index], self.y[test_index[range(self.timesteps_output-1,len(test_index),self.timesteps_output)]]
 
@@ -167,9 +172,9 @@ if __name__ =="__main__":
 
     if args.load_pretrained == False:
         delafo = DELAFO.from_existing_config(args.data_path,args.model,model_config_path,args.timesteps_input,args.timesteps_output)
-        delafo.train_model(n_fold=10,batch_size=16,epochs=1)
+        delafo.train_model(n_fold=10,batch_size=16,epochs=300)
         delafo.save_model()
     else:
         delafo = DELAFO.from_saved_model(args.data_path,args.model_path,args.timesteps_output)
-        delafo.train_model(n_fold=10,batch_size=16,epochs=1)
+        delafo.train_model(n_fold=10,batch_size=16,epochs=300)
         delafo.save_model()
