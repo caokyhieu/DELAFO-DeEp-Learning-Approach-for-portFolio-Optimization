@@ -25,9 +25,18 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
 ### --model_name : all available models at the moment are:
  * ['ResNet' , 'GRU' , 'LSTM' , 'AA_GRU' , 'AA_LSTM' , 'SA_GRU' , 'SA_LSTM'] with corresponding configuration file in `config` folder.
   RNN model with attention mechanism.
+  <p align="center">
+     <img src="images/model" width="480"></p>
+     <p align="center">ResNet model.(b) is the first residual block. (c) is the architecture of second and third blocks. (d) is the final block. <p align="center">
 
-   <img align="left" src="images/Add_att_RNN.png" width="350">
-   <img align="right" src="images/selfatt_RNN.png" width="350">
+<p align="center">
+   <img src="images/Add_att_RNN.png" width="480"></p>
+   <p align="center">Additive Attention with RNN model<p align="center">
+
+<p align="center">
+   <img src="images/selfatt_RNN.png" width="480"></p>
+   <p align="center">Self Attention with RNN model<p align="center">
+
  * You can change the configuration of these models by changing the config file in config folder (We do not recommend to do it, because these hyperparameters had been tuned for these models).
  * You can design your own model by put it in `models` folder.
 
@@ -38,8 +47,13 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
   * Now all the models just support for data have 4 fields ['ticker','date','price','volume'] like in picture:
   <img align= "center" src="images/data_sample.png" width="380">
 
+## Training:
 
-
+ We do the ForWard Chain to train and evaluate the models like picture below:
+ <p align="center">
+    <img src="images/Forward_chaining.png" width="480"></p>
+    <p align="center">Forward Chain. The Blue block is training data, the Red block is evaluating data.<p align="center">
+    
 ## Requirement:
  * python          3.6.2
  * scikit-learn    0.21.3
