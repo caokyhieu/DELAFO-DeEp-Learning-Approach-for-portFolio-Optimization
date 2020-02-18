@@ -9,7 +9,7 @@
     The number of tickers will be constrainted by the constraint_value in loss function.
 
 ## Training
-#### All the data will be preprocessed before using to train our models.(preprocess_data.py)
+#### All the data will be preprocessed before using to train our models.(preprocess_data.py):
 
     * with input is the past event(price and volume of market in 64 days ago).
     * predict the future tickers should be in our portfolios. (next 19 working days~ around one next month).
