@@ -25,10 +25,10 @@ Firstly, you need to download data and put it in `data` folder, you can download
 ```bash
 $ python main.py --data_path path/to/data --model model/name --load_pretrained True/False --model_path '' --timesteps_input time/window/input --timesteps_input time/window/output
 ```
-**--data_path**: path to dataset.
-**--load_pretrained** Bool value. True if you want to load pretrained model. Default False
-**--model_path** : if --load_pretrained == True . You have to specify the `path` to pretrained model.
-**--model_name** : all available models at the moment are:
+⋅⋅⋅**--data_path**: path to dataset.⋅⋅
+⋅⋅⋅**--load_pretrained** Bool value. True if you want to load pretrained model. Default False.⋅⋅
+⋅⋅⋅**--model_path** : if --load_pretrained == True . You have to specify the `path` to pretrained model.⋅⋅
+⋅⋅⋅**--model_name** : all available models at the moment are:⋅⋅
  * ['ResNet' , 'GRU' , 'LSTM' , 'AA_GRU' , 'AA_LSTM' , 'SA_GRU' , 'SA_LSTM'] with corresponding configuration file in `config` folder.
   RNN model with attention mechanism.
   <p align="center">
