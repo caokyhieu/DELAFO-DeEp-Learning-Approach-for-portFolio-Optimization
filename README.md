@@ -26,7 +26,7 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
  * ['ResNet' , 'GRU' , 'LSTM' , 'AA_GRU' , 'AA_LSTM' , 'SA_GRU' , 'SA_LSTM'] with corresponding configuration file in `config` folder.
   RNN model with attention mechanism.
   <p align="center">
-     <img src="images/model" width="480"></p>
+     <img src="images/model" width="640"></p>
      <p align="center">ResNet model.(b) is the first residual block. (c) is the architecture of second and third blocks. (d) is the final block. <p align="center">
 
 <p align="center">
@@ -51,9 +51,9 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
 
  We do the ForWard Chain to train and evaluate the models like picture below:
  <p align="center">
-    <img src="images/Forward_chaining.png" width="480"></p>
+    <img src="images/Forward_chaining.png" width="520"></p>
     <p align="center">Forward Chain. The Blue block is training data, the Red block is evaluating data.<p align="center">
-    
+
 ## Requirement:
  * python          3.6.2
  * scikit-learn    0.21.3
