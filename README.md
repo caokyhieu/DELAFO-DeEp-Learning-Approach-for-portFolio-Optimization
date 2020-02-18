@@ -13,6 +13,11 @@
     * with input is the past event(price and volume of market in 64 days ago).
     * predict the future tickers should be in our portfolios. (next 19 working days~ around one next month).
 
+    * We do the ForWard Chain to train and evaluate the models like picture below:
+    <p align="center">
+       <img src="images/Forward_chaining.png" width="520"></p>
+       <p align="center">Forward Chain. The Blue block is training data, the Red block is evaluating data.<p align="center">
+     * The result will write in 'logs' folder and `plot` folder.
 
 ## Usage:
 Firstly, you need to download data and put it in `data` folder, you can download from [Link download data from Entropy Contest 2019](https://drive.google.com/file/d/1IwUwxzctgagNipWLBfuqCUAfmkXVyeXC/view?usp=sharing).
@@ -47,12 +52,6 @@ $ python main.py --data_path path/to/data --model model/name --load_pretrained T
   * Now all the models just support for data have 4 fields ['ticker','date','price','volume'] like in picture:
   <img align= "center" src="images/data_sample.png" width="380">
 
-## Training:
-
- We do the ForWard Chain to train and evaluate the models like picture below:
- <p align="center">
-    <img src="images/Forward_chaining.png" width="520"></p>
-    <p align="center">Forward Chain. The Blue block is training data, the Red block is evaluating data.<p align="center">
 
 ## Requirement:
  * python          3.6.2
