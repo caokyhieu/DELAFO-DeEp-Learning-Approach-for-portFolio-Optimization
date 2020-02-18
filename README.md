@@ -10,6 +10,7 @@
 
 ## Training
 #### All the data will be preprocessed before using to train our models.(preprocess_data.py)
+
     * with input is the past event(price and volume of market in 64 days ago).
     * predict the future tickers should be in our portfolios. (next 19 working days~ around one next month).
 
@@ -17,7 +18,7 @@
     <p align="center">
        <img src="images/Forward_chaining.png" width="520"></p>
        <p align="center">Forward Chain. The Blue block is training data, the Red block is evaluating data.<p align="center">
-     * The result will write in 'logs' folder and `plot` folder.
+    * The result will write in 'logs' folder and `plot` folder.
 
 ## Usage:
 Firstly, you need to download data and put it in `data` folder, you can download from [Link download data from Entropy Contest 2019](https://drive.google.com/file/d/1IwUwxzctgagNipWLBfuqCUAfmkXVyeXC/view?usp=sharing).
