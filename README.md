@@ -18,7 +18,8 @@
     <p align="center">
        <img src="images/Forward_chaining.png" width="520"></p>
        <p align="center">Forward Chain. The Blue block is training data, the Red block is evaluating data.<p align="center">
-  * The result will write in 'logs' folder and `plot` folder.
+  * The result will write in `logs` folder and `plot` folder.
+  * The model will be saved in `pretrain_model` folder. You can download our pretrained model [Additive Attention with GRU](https://drive.google.com/file/d/1X5dhLOe-aLfWB6SWII-YTJbKTEQy1C08/view?usp=sharing)
 
 ## Usage:
 Firstly, you need to download data and put it in `data` folder, you can download from [Link download data from Entropy Contest 2019](https://drive.google.com/file/d/1IwUwxzctgagNipWLBfuqCUAfmkXVyeXC/view?usp=sharing).
